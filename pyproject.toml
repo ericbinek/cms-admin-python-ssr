@@ -1,0 +1,8 @@
+[project]
+name = "cms-admin-python-ssr"
+version = "0.1.0"
+description = "Server-rendered, login-protected schema.org-aligned CMS admin UI on Python — no runtime dependencies."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Eric Binek" }]
+requires-python = ">=3.14"
