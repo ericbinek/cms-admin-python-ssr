@@ -1,28 +1,22 @@
 from app.views import layout as layout_mod
 from app.views.layout import escape_html, layout, render_field, parse_form_body, form_values_from_item, error_page, csrf_field
 
-ENTITY = "BlogPosting"
-BASE = "/blog-postings"
+ENTITY = "VideoObject"
+BASE = "/video-objects"
 PROPERTIES = [
-    {"name": "headline", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "alternativeHeadline", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
     {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "articleBody", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "author", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": True},
-    {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
-    {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "many", "required": False},
-    {"name": "video", "kind": "Ref", "targets": ["VideoObject"], "cardinality": "many", "required": False},
-    {"name": "audio", "kind": "Ref", "targets": ["AudioObject"], "cardinality": "many", "required": False},
-    {"name": "keywords", "kind": "Ref", "targets": ["DefinedTerm"], "cardinality": "many", "required": False},
-    {"name": "about", "kind": "Ref", "targets": ["CategoryCode"], "cardinality": "many", "required": False},
-    {"name": "datePublished", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "dateModified", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "dateCreated", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
-    {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
-    {"name": "isAccessibleForFree", "kind": "InlineScalar", "use": "Boolean", "cardinality": "one", "required": False},
-    {"name": "wordCount", "kind": "InlineScalar", "use": "Integer", "cardinality": "one", "required": False},
-    {"name": "creativeWorkStatus", "kind": "Enum", "values": ["Draft", "Pending", "Published", "Archived"], "cardinality": "one", "required": False},
+    {"name": "contentUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
+    {"name": "embedUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "encodingFormat", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "duration", "kind": "InlineScalar", "use": "Duration", "cardinality": "one", "required": False},
+    {"name": "videoQuality", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "transcript", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "caption", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "uploadDate", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
+    {"name": "creator", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": False},
+    {"name": "thumbnail", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
+    {"name": "productionCompany", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
 ]
 
 

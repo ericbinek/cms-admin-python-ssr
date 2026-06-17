@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/ericbinek/cms-admin-python-ssr/actions/workflows/test.yml/badge.svg)](https://github.com/ericbinek/cms-admin-python-ssr/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)
 ![Status](https://img.shields.io/badge/status-work_in_progress-orange.svg)
 ![Build in public](https://img.shields.io/badge/build-in_public-ff69b4.svg)
 ![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
@@ -12,11 +12,11 @@ A server rendered admin interface for a schema.org aligned CMS, written in plain
 
 There is no `requirements.txt` and no virtual environment to manage. It serves semantic HTML from `http.server`, with no template engine and no build step.
 
-It is login protected and offers full create, edit, and delete management for 10 schema.org entity types such as BlogPosting, Person, and WebPage. It is a stateless proxy: the browser holds an HttpOnly session cookie, the server translates it into a bearer token for the CMS API, and the API stays the authority for authentication and permissions. State changing forms carry a CSRF synchronizer token.
+It is login protected and offers full create, edit, and delete management for 14 schema.org entity types such as BlogPosting, Person, and Organization. It is a stateless proxy: the browser holds an HttpOnly session cookie, the server translates it into a bearer token for the CMS API, and the API stays the authority for authentication and permissions. State changing forms carry a CSRF synchronizer token.
 
 A conformance test suite defines the markup and behavior.
 
-## Status: work in progress (v0.1.0)
+## Status: work in progress (v0.2.0)
 
 This is an ongoing build-in-public project, shared only for community and communication purposes. Do not deploy it in production. Do not rely on its interfaces or data format remaining stable.
 
@@ -55,14 +55,18 @@ Configure the upstream API via the `API_BASE_URL` environment variable. Set `COO
 
 - `BlogPosting`
 - `Person`
+- `Organization`
 - `WebPage`
 - `ImageObject`
+- `VideoObject`
+- `AudioObject`
 - `CategoryCode`
 - `CategoryCodeSet`
 - `DefinedTerm`
 - `DefinedTermSet`
 - `Comment`
 - `WebSite`
+- `SiteNavigationElement`
 
 ## Testing
 

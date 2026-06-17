@@ -1,15 +1,19 @@
 from app.views import layout as layout_mod
 from app.views.layout import escape_html, layout, render_field, parse_form_body, csrf_field
 
-ENTITY = "WebSite"
-BASE = "/web-sites"
+ENTITY = "Organization"
+BASE = "/organizations"
 PROPERTIES = [
     {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
+    {"name": "legalName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
     {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
-    {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
-    {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
-    {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "email", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "telephone", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "logo", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
+    {"name": "foundingDate", "kind": "InlineScalar", "use": "Date", "cardinality": "one", "required": False},
+    {"name": "sameAs", "kind": "InlineScalar", "use": "URL", "cardinality": "many", "required": False},
+    {"name": "parentOrganization", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
 ]
 
 

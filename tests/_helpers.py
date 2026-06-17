@@ -19,14 +19,18 @@ CSRF_COOKIE = "cms_csrf"
 PLURALS = {
     "BlogPosting": "blog-postings",
     "Person": "persons",
+    "Organization": "organizations",
     "WebPage": "web-pages",
     "ImageObject": "image-objects",
+    "VideoObject": "video-objects",
+    "AudioObject": "audio-objects",
     "CategoryCode": "category-codes",
     "CategoryCodeSet": "category-code-sets",
     "DefinedTerm": "defined-terms",
     "DefinedTermSet": "defined-term-sets",
     "Comment": "comments",
     "WebSite": "web-sites",
+    "SiteNavigationElement": "site-navigation-elements",
 }
 
 SAMPLES = {
@@ -38,10 +42,19 @@ SAMPLES = {
     "Person": {
         "name": "sample",
     },
+    "Organization": {
+        "name": "sample",
+    },
     "WebPage": {
         "headline": "sample",
     },
     "ImageObject": {
+        "contentUrl": "https://example.com/x",
+    },
+    "VideoObject": {
+        "contentUrl": "https://example.com/x",
+    },
+    "AudioObject": {
         "contentUrl": "https://example.com/x",
     },
     "CategoryCode": {
@@ -69,9 +82,13 @@ SAMPLES = {
         "name": "sample",
         "url": "https://example.com/x",
     },
+    "SiteNavigationElement": {
+        "name": "sample",
+        "url": "https://example.com/x",
+    },
 }
 
-ENTITIES = ["BlogPosting", "Person", "WebPage", "ImageObject", "CategoryCode", "CategoryCodeSet", "DefinedTerm", "DefinedTermSet", "Comment", "WebSite"]
+ENTITIES = ["BlogPosting", "Person", "Organization", "WebPage", "ImageObject", "VideoObject", "AudioObject", "CategoryCode", "CategoryCodeSet", "DefinedTerm", "DefinedTermSet", "Comment", "WebSite", "SiteNavigationElement"]
 
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "admin-password"

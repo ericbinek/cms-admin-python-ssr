@@ -19,14 +19,18 @@ from urllib.parse import urlparse, parse_qs
 SCHEMAS = {
     "BlogPosting": {"plural": "blog-postings", "required": ["headline", "articleBody", "author"]},
     "Person": {"plural": "persons", "required": ["name"]},
+    "Organization": {"plural": "organizations", "required": ["name"]},
     "WebPage": {"plural": "web-pages", "required": ["headline"]},
     "ImageObject": {"plural": "image-objects", "required": ["contentUrl"]},
+    "VideoObject": {"plural": "video-objects", "required": ["contentUrl"]},
+    "AudioObject": {"plural": "audio-objects", "required": ["contentUrl"]},
     "CategoryCode": {"plural": "category-codes", "required": ["name", "codeValue", "inCodeSet"]},
     "CategoryCodeSet": {"plural": "category-code-sets", "required": ["name"]},
     "DefinedTerm": {"plural": "defined-terms", "required": ["name", "termCode", "inDefinedTermSet"]},
     "DefinedTermSet": {"plural": "defined-term-sets", "required": ["name"]},
     "Comment": {"plural": "comments", "required": ["text", "author", "about"]},
     "WebSite": {"plural": "web-sites", "required": ["name", "url"]},
+    "SiteNavigationElement": {"plural": "site-navigation-elements", "required": ["name", "url"]},
 }
 
 ENTITY_BY_PLURAL = {s["plural"]: name for name, s in SCHEMAS.items()}

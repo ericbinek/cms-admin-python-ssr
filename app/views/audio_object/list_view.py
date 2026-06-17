@@ -3,22 +3,21 @@ from urllib.parse import parse_qs, urlencode, urlparse
 from app.views import layout as layout_mod
 from app.views.layout import escape_html, layout, format_value, display_name
 
-ENTITY = "Person"
-BASE = "/persons"
+ENTITY = "AudioObject"
+BASE = "/audio-objects"
 PROPERTIES = [
-    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "givenName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "familyName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "alternateName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "email", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
     {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
-    {"name": "worksFor", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
-    {"name": "jobTitle", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "sameAs", "kind": "InlineScalar", "use": "URL", "cardinality": "many", "required": False},
+    {"name": "contentUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
+    {"name": "encodingFormat", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "duration", "kind": "InlineScalar", "use": "Duration", "cardinality": "one", "required": False},
+    {"name": "transcript", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "uploadDate", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
+    {"name": "creator", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": False},
+    {"name": "thumbnail", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
+    {"name": "productionCompany", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
 ]
-EXTRA_COLS = ["url"]
+EXTRA_COLS = ["contentUrl"]
 
 
 def render(opts):

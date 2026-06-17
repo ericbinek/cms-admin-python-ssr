@@ -8,6 +8,7 @@ PROPERTIES = [
     {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
     {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
     {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
+    {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
 ]
 
 

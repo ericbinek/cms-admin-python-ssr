@@ -1,19 +1,18 @@
 from app.views.layout import escape_html, layout, format_value, display_name, error_page
 
-ENTITY = "Person"
-BASE = "/persons"
+ENTITY = "Organization"
+BASE = "/organizations"
 PROPERTIES = [
     {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "givenName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "familyName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "alternateName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "email", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "legalName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
     {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
-    {"name": "worksFor", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
-    {"name": "jobTitle", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "email", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "telephone", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "logo", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
+    {"name": "foundingDate", "kind": "InlineScalar", "use": "Date", "cardinality": "one", "required": False},
     {"name": "sameAs", "kind": "InlineScalar", "use": "URL", "cardinality": "many", "required": False},
+    {"name": "parentOrganization", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
 ]
 
 

@@ -1,28 +1,19 @@
 from app.views import layout as layout_mod
 from app.views.layout import escape_html, layout, render_field, parse_form_body, form_values_from_item, error_page, csrf_field
 
-ENTITY = "BlogPosting"
-BASE = "/blog-postings"
+ENTITY = "Organization"
+BASE = "/organizations"
 PROPERTIES = [
-    {"name": "headline", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "alternativeHeadline", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
+    {"name": "legalName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
     {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "articleBody", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "author", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": True},
-    {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
-    {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "many", "required": False},
-    {"name": "video", "kind": "Ref", "targets": ["VideoObject"], "cardinality": "many", "required": False},
-    {"name": "audio", "kind": "Ref", "targets": ["AudioObject"], "cardinality": "many", "required": False},
-    {"name": "keywords", "kind": "Ref", "targets": ["DefinedTerm"], "cardinality": "many", "required": False},
-    {"name": "about", "kind": "Ref", "targets": ["CategoryCode"], "cardinality": "many", "required": False},
-    {"name": "datePublished", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "dateModified", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "dateCreated", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
-    {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
-    {"name": "isAccessibleForFree", "kind": "InlineScalar", "use": "Boolean", "cardinality": "one", "required": False},
-    {"name": "wordCount", "kind": "InlineScalar", "use": "Integer", "cardinality": "one", "required": False},
-    {"name": "creativeWorkStatus", "kind": "Enum", "values": ["Draft", "Pending", "Published", "Archived"], "cardinality": "one", "required": False},
+    {"name": "email", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "telephone", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "logo", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
+    {"name": "foundingDate", "kind": "InlineScalar", "use": "Date", "cardinality": "one", "required": False},
+    {"name": "sameAs", "kind": "InlineScalar", "use": "URL", "cardinality": "many", "required": False},
+    {"name": "parentOrganization", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
 ]
 
 

@@ -1,15 +1,22 @@
 from app.views import layout as layout_mod
 from app.views.layout import escape_html, layout, render_field, parse_form_body, csrf_field
 
-ENTITY = "WebSite"
-BASE = "/web-sites"
+ENTITY = "VideoObject"
+BASE = "/video-objects"
 PROPERTIES = [
-    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
     {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
-    {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
-    {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
-    {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
+    {"name": "contentUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
+    {"name": "embedUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "encodingFormat", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "duration", "kind": "InlineScalar", "use": "Duration", "cardinality": "one", "required": False},
+    {"name": "videoQuality", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "transcript", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "caption", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "uploadDate", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
+    {"name": "creator", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": False},
+    {"name": "thumbnail", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
+    {"name": "productionCompany", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
 ]
 
 

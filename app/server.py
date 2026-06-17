@@ -30,6 +30,11 @@ from app.views.person.detail_view import render as person_detail
 from app.views.person.create_view import render_form as person_create_form, handle_submit as person_create_submit
 from app.views.person.edit_view import render_form as person_edit_form, handle_submit as person_edit_submit
 from app.views.person.delete_view import render_form as person_delete_form, handle_submit as person_delete_submit
+from app.views.organization.list_view import render as organization_list
+from app.views.organization.detail_view import render as organization_detail
+from app.views.organization.create_view import render_form as organization_create_form, handle_submit as organization_create_submit
+from app.views.organization.edit_view import render_form as organization_edit_form, handle_submit as organization_edit_submit
+from app.views.organization.delete_view import render_form as organization_delete_form, handle_submit as organization_delete_submit
 from app.views.web_page.list_view import render as web_page_list
 from app.views.web_page.detail_view import render as web_page_detail
 from app.views.web_page.create_view import render_form as web_page_create_form, handle_submit as web_page_create_submit
@@ -40,6 +45,16 @@ from app.views.image_object.detail_view import render as image_object_detail
 from app.views.image_object.create_view import render_form as image_object_create_form, handle_submit as image_object_create_submit
 from app.views.image_object.edit_view import render_form as image_object_edit_form, handle_submit as image_object_edit_submit
 from app.views.image_object.delete_view import render_form as image_object_delete_form, handle_submit as image_object_delete_submit
+from app.views.video_object.list_view import render as video_object_list
+from app.views.video_object.detail_view import render as video_object_detail
+from app.views.video_object.create_view import render_form as video_object_create_form, handle_submit as video_object_create_submit
+from app.views.video_object.edit_view import render_form as video_object_edit_form, handle_submit as video_object_edit_submit
+from app.views.video_object.delete_view import render_form as video_object_delete_form, handle_submit as video_object_delete_submit
+from app.views.audio_object.list_view import render as audio_object_list
+from app.views.audio_object.detail_view import render as audio_object_detail
+from app.views.audio_object.create_view import render_form as audio_object_create_form, handle_submit as audio_object_create_submit
+from app.views.audio_object.edit_view import render_form as audio_object_edit_form, handle_submit as audio_object_edit_submit
+from app.views.audio_object.delete_view import render_form as audio_object_delete_form, handle_submit as audio_object_delete_submit
 from app.views.category_code.list_view import render as category_code_list
 from app.views.category_code.detail_view import render as category_code_detail
 from app.views.category_code.create_view import render_form as category_code_create_form, handle_submit as category_code_create_submit
@@ -70,6 +85,11 @@ from app.views.web_site.detail_view import render as web_site_detail
 from app.views.web_site.create_view import render_form as web_site_create_form, handle_submit as web_site_create_submit
 from app.views.web_site.edit_view import render_form as web_site_edit_form, handle_submit as web_site_edit_submit
 from app.views.web_site.delete_view import render_form as web_site_delete_form, handle_submit as web_site_delete_submit
+from app.views.site_navigation_element.list_view import render as site_navigation_element_list
+from app.views.site_navigation_element.detail_view import render as site_navigation_element_detail
+from app.views.site_navigation_element.create_view import render_form as site_navigation_element_create_form, handle_submit as site_navigation_element_create_submit
+from app.views.site_navigation_element.edit_view import render_form as site_navigation_element_edit_form, handle_submit as site_navigation_element_edit_submit
+from app.views.site_navigation_element.delete_view import render_form as site_navigation_element_delete_form, handle_submit as site_navigation_element_delete_submit
 
 UUID_PATTERN = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.IGNORECASE)
 PUBLIC_DIR = Path(__file__).resolve().parent.parent / "public"
@@ -78,14 +98,18 @@ MAX_BODY_SIZE = 1024 * 1024
 ENTITY_ROUTES = [
     {"entity": "BlogPosting", "plural": "blog-postings", "list": blog_posting_list, "detail": blog_posting_detail, "create_form": blog_posting_create_form, "create_submit": blog_posting_create_submit, "edit_form": blog_posting_edit_form, "edit_submit": blog_posting_edit_submit, "delete_form": blog_posting_delete_form, "delete_submit": blog_posting_delete_submit},
     {"entity": "Person", "plural": "persons", "list": person_list, "detail": person_detail, "create_form": person_create_form, "create_submit": person_create_submit, "edit_form": person_edit_form, "edit_submit": person_edit_submit, "delete_form": person_delete_form, "delete_submit": person_delete_submit},
+    {"entity": "Organization", "plural": "organizations", "list": organization_list, "detail": organization_detail, "create_form": organization_create_form, "create_submit": organization_create_submit, "edit_form": organization_edit_form, "edit_submit": organization_edit_submit, "delete_form": organization_delete_form, "delete_submit": organization_delete_submit},
     {"entity": "WebPage", "plural": "web-pages", "list": web_page_list, "detail": web_page_detail, "create_form": web_page_create_form, "create_submit": web_page_create_submit, "edit_form": web_page_edit_form, "edit_submit": web_page_edit_submit, "delete_form": web_page_delete_form, "delete_submit": web_page_delete_submit},
     {"entity": "ImageObject", "plural": "image-objects", "list": image_object_list, "detail": image_object_detail, "create_form": image_object_create_form, "create_submit": image_object_create_submit, "edit_form": image_object_edit_form, "edit_submit": image_object_edit_submit, "delete_form": image_object_delete_form, "delete_submit": image_object_delete_submit},
+    {"entity": "VideoObject", "plural": "video-objects", "list": video_object_list, "detail": video_object_detail, "create_form": video_object_create_form, "create_submit": video_object_create_submit, "edit_form": video_object_edit_form, "edit_submit": video_object_edit_submit, "delete_form": video_object_delete_form, "delete_submit": video_object_delete_submit},
+    {"entity": "AudioObject", "plural": "audio-objects", "list": audio_object_list, "detail": audio_object_detail, "create_form": audio_object_create_form, "create_submit": audio_object_create_submit, "edit_form": audio_object_edit_form, "edit_submit": audio_object_edit_submit, "delete_form": audio_object_delete_form, "delete_submit": audio_object_delete_submit},
     {"entity": "CategoryCode", "plural": "category-codes", "list": category_code_list, "detail": category_code_detail, "create_form": category_code_create_form, "create_submit": category_code_create_submit, "edit_form": category_code_edit_form, "edit_submit": category_code_edit_submit, "delete_form": category_code_delete_form, "delete_submit": category_code_delete_submit},
     {"entity": "CategoryCodeSet", "plural": "category-code-sets", "list": category_code_set_list, "detail": category_code_set_detail, "create_form": category_code_set_create_form, "create_submit": category_code_set_create_submit, "edit_form": category_code_set_edit_form, "edit_submit": category_code_set_edit_submit, "delete_form": category_code_set_delete_form, "delete_submit": category_code_set_delete_submit},
     {"entity": "DefinedTerm", "plural": "defined-terms", "list": defined_term_list, "detail": defined_term_detail, "create_form": defined_term_create_form, "create_submit": defined_term_create_submit, "edit_form": defined_term_edit_form, "edit_submit": defined_term_edit_submit, "delete_form": defined_term_delete_form, "delete_submit": defined_term_delete_submit},
     {"entity": "DefinedTermSet", "plural": "defined-term-sets", "list": defined_term_set_list, "detail": defined_term_set_detail, "create_form": defined_term_set_create_form, "create_submit": defined_term_set_create_submit, "edit_form": defined_term_set_edit_form, "edit_submit": defined_term_set_edit_submit, "delete_form": defined_term_set_delete_form, "delete_submit": defined_term_set_delete_submit},
     {"entity": "Comment", "plural": "comments", "list": comment_list, "detail": comment_detail, "create_form": comment_create_form, "create_submit": comment_create_submit, "edit_form": comment_edit_form, "edit_submit": comment_edit_submit, "delete_form": comment_delete_form, "delete_submit": comment_delete_submit},
     {"entity": "WebSite", "plural": "web-sites", "list": web_site_list, "detail": web_site_detail, "create_form": web_site_create_form, "create_submit": web_site_create_submit, "edit_form": web_site_edit_form, "edit_submit": web_site_edit_submit, "delete_form": web_site_delete_form, "delete_submit": web_site_delete_submit},
+    {"entity": "SiteNavigationElement", "plural": "site-navigation-elements", "list": site_navigation_element_list, "detail": site_navigation_element_detail, "create_form": site_navigation_element_create_form, "create_submit": site_navigation_element_create_submit, "edit_form": site_navigation_element_edit_form, "edit_submit": site_navigation_element_edit_submit, "delete_form": site_navigation_element_delete_form, "delete_submit": site_navigation_element_delete_submit},
 ]
 
 STATIC_TYPES = {

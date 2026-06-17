@@ -1,15 +1,14 @@
 from app.views import layout as layout_mod
 from app.views.layout import escape_html, layout, render_field, parse_form_body, csrf_field
 
-ENTITY = "WebSite"
-BASE = "/web-sites"
+ENTITY = "SiteNavigationElement"
+BASE = "/site-navigation-elements"
 PROPERTIES = [
     {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
     {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
-    {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
-    {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
-    {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "position", "kind": "InlineScalar", "use": "Integer", "cardinality": "one", "required": False},
+    {"name": "isPartOf", "kind": "Ref", "targets": ["SiteNavigationElement"], "cardinality": "one", "required": False},
 ]
 
 
