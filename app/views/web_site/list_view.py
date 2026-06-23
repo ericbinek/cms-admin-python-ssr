@@ -6,9 +6,9 @@ from app.views.layout import escape_html, layout, format_value, display_name
 ENTITY = "WebSite"
 BASE = "/web-sites"
 PROPERTIES = [
-    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": True},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "maxLength": 5000, "multiline": True, "cardinality": "one", "required": False},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": True},
     {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
     {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
     {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},

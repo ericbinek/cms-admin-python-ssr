@@ -4,10 +4,10 @@ from app.views.layout import escape_html, layout, render_field, parse_form_body,
 ENTITY = "DefinedTerm"
 BASE = "/defined-terms"
 PROPERTIES = [
-    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "termCode", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": True},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "maxLength": 5000, "multiline": True, "cardinality": "one", "required": False},
+    {"name": "termCode", "kind": "InlineScalar", "use": "Text", "maxLength": 128, "cardinality": "one", "required": True},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": False},
     {"name": "inDefinedTermSet", "kind": "Ref", "targets": ["DefinedTermSet"], "cardinality": "one", "required": True},
 ]
 

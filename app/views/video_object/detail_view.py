@@ -3,15 +3,15 @@ from app.views.layout import escape_html, layout, format_value, display_name, er
 ENTITY = "VideoObject"
 BASE = "/video-objects"
 PROPERTIES = [
-    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "contentUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
-    {"name": "embedUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
-    {"name": "encodingFormat", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": False},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "maxLength": 5000, "multiline": True, "cardinality": "one", "required": False},
+    {"name": "contentUrl", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": True},
+    {"name": "embedUrl", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": False},
+    {"name": "encodingFormat", "kind": "InlineScalar", "use": "Text", "maxLength": 128, "cardinality": "one", "required": False},
     {"name": "duration", "kind": "InlineScalar", "use": "Duration", "cardinality": "one", "required": False},
-    {"name": "videoQuality", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "transcript", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "caption", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "videoQuality", "kind": "InlineScalar", "use": "Text", "maxLength": 128, "cardinality": "one", "required": False},
+    {"name": "transcript", "kind": "InlineScalar", "use": "Text", "maxLength": 65536, "multiline": True, "cardinality": "one", "required": False},
+    {"name": "caption", "kind": "InlineScalar", "use": "Text", "maxLength": 1024, "cardinality": "one", "required": False},
     {"name": "uploadDate", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "creator", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": False},
     {"name": "thumbnail", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},

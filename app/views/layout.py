@@ -37,8 +37,6 @@ DISPLAY_KEYS = {
     "SiteNavigationElement": ("name",),
 }
 
-LONG_TEXT_HINT = {"articleBody", "description", "text"}
-
 _FORM_ISO_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$")
 
 _HTML_ESCAPE_MAP = str.maketrans({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"})
@@ -186,6 +184,7 @@ def render_field(prop, value=None, ref_options=None, errors=None):
 def _render_input(prop, value, field_id, required_attr, aria_invalid, ref_options):
     name = escape_html(prop["name"])
     kind = prop["kind"]
+    max_length_attr = f' maxlength="{prop["maxLength"]}"' if prop.get("maxLength") is not None else ""
     if kind == "Enum":
         opts = "".join(
             f'<option value="{escape_html(v)}"{" selected" if v == value else ""}>{escape_html(v)}</option>'
@@ -212,10 +211,10 @@ def _render_input(prop, value, field_id, required_attr, aria_invalid, ref_option
         v = "\n".join(value) if isinstance(value, list) else (value or "")
         return f'<textarea id="{field_id}" name="{name}" rows="3"{required_attr}{aria_invalid}>{escape_html(v)}</textarea>'
     use = prop.get("use")
-    if use == "Text" and prop["name"] in LONG_TEXT_HINT:
-        return f'<textarea id="{field_id}" name="{name}" rows="6"{required_attr}{aria_invalid}>{escape_html(value)}</textarea>'
+    if use == "Text" and prop.get("multiline"):
+        return f'<textarea id="{field_id}" name="{name}" rows="6"{max_length_attr}{required_attr}{aria_invalid}>{escape_html(value)}</textarea>'
     if use == "URL":
-        return f'<input id="{field_id}" name="{name}" type="url" value="{escape_html(value)}"{required_attr}{aria_invalid}>'
+        return f'<input id="{field_id}" name="{name}" type="url" value="{escape_html(value)}"{max_length_attr}{required_attr}{aria_invalid}>'
     if use == "Integer":
         v = "" if value is None else escape_html(str(value))
         return f'<input id="{field_id}" name="{name}" type="number" step="1" value="{v}"{required_attr}{aria_invalid}>'
@@ -228,7 +227,7 @@ def _render_input(prop, value, field_id, required_attr, aria_invalid, ref_option
     if use in ("DateTime", "Date", "Time"):
         v = value.rstrip("Z")[:16] if isinstance(value, str) else ""
         return f'<input id="{field_id}" name="{name}" type="datetime-local" value="{escape_html(v)}"{required_attr}{aria_invalid}>'
-    return f'<input id="{field_id}" name="{name}" type="text" value="{escape_html(value)}"{required_attr}{aria_invalid}>'
+    return f'<input id="{field_id}" name="{name}" type="text" value="{escape_html(value)}"{max_length_attr}{required_attr}{aria_invalid}>'
 
 
 def _coerce_form_value(raw, prop):

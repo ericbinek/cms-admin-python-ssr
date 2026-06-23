@@ -4,14 +4,14 @@ from app.views.layout import escape_html, layout, render_field, parse_form_body,
 ENTITY = "ImageObject"
 BASE = "/image-objects"
 PROPERTIES = [
-    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "caption", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "contentUrl", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": True},
-    {"name": "encodingFormat", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": False},
+    {"name": "caption", "kind": "InlineScalar", "use": "Text", "maxLength": 1024, "cardinality": "one", "required": False},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "maxLength": 5000, "multiline": True, "cardinality": "one", "required": False},
+    {"name": "contentUrl", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": True},
+    {"name": "encodingFormat", "kind": "InlineScalar", "use": "Text", "maxLength": 128, "cardinality": "one", "required": False},
     {"name": "uploadDate", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "creator", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": False},
-    {"name": "license", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "license", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": False},
 ]
 
 

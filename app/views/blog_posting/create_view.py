@@ -4,10 +4,10 @@ from app.views.layout import escape_html, layout, render_field, parse_form_body,
 ENTITY = "BlogPosting"
 BASE = "/blog-postings"
 PROPERTIES = [
-    {"name": "headline", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "alternativeHeadline", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "articleBody", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
+    {"name": "headline", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": True},
+    {"name": "alternativeHeadline", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": False},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "maxLength": 5000, "multiline": True, "cardinality": "one", "required": False},
+    {"name": "articleBody", "kind": "InlineScalar", "use": "Text", "maxLength": 65536, "multiline": True, "cardinality": "one", "required": True},
     {"name": "author", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": True},
     {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
     {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "many", "required": False},
@@ -18,7 +18,7 @@ PROPERTIES = [
     {"name": "datePublished", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "dateModified", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "dateCreated", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": False},
     {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
     {"name": "isAccessibleForFree", "kind": "InlineScalar", "use": "Boolean", "cardinality": "one", "required": False},
     {"name": "wordCount", "kind": "InlineScalar", "use": "Integer", "cardinality": "one", "required": False},

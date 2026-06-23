@@ -2,7 +2,7 @@
 
 The goal is a CMS whose content is structured and schema.org-native, managed through a semantic, predictable admin interface over a strict API. The admin stays a thin, stateless proxy while the API remains the authority, which keeps the whole system a clean substrate for automation and LLM-driven workflows.
 
-This is a work-in-progress project (v0.2.0). The roadmap is deliberately loose, will grow, and the order can change based on what proves useful. Nothing here is a promise.
+This is a work-in-progress project (v0.3.0). The roadmap is deliberately loose, will grow, and the order can change based on what proves useful. Nothing here is a promise.
 
 ## Recently shipped
 

@@ -4,17 +4,17 @@ from app.views.layout import escape_html, layout, render_field, parse_form_body,
 ENTITY = "Person"
 BASE = "/persons"
 PROPERTIES = [
-    {"name": "name", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "givenName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "familyName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "alternateName", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "email", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "name", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": True},
+    {"name": "givenName", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": False},
+    {"name": "familyName", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": False},
+    {"name": "alternateName", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": False},
+    {"name": "email", "kind": "InlineScalar", "use": "Text", "maxLength": 320, "cardinality": "one", "required": False},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": False},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "maxLength": 5000, "multiline": True, "cardinality": "one", "required": False},
     {"name": "image", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
     {"name": "worksFor", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
-    {"name": "jobTitle", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "sameAs", "kind": "InlineScalar", "use": "URL", "cardinality": "many", "required": False},
+    {"name": "jobTitle", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": False},
+    {"name": "sameAs", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "many", "required": False},
 ]
 
 

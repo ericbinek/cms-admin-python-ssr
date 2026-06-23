@@ -6,9 +6,9 @@ from app.views.layout import escape_html, layout, format_value, display_name
 ENTITY = "WebPage"
 BASE = "/web-pages"
 PROPERTIES = [
-    {"name": "headline", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
-    {"name": "description", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
-    {"name": "text", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": False},
+    {"name": "headline", "kind": "InlineScalar", "use": "Text", "maxLength": 256, "cardinality": "one", "required": True},
+    {"name": "description", "kind": "InlineScalar", "use": "Text", "maxLength": 5000, "multiline": True, "cardinality": "one", "required": False},
+    {"name": "text", "kind": "InlineScalar", "use": "Text", "maxLength": 65536, "multiline": True, "cardinality": "one", "required": False},
     {"name": "author", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": False},
     {"name": "publisher", "kind": "Ref", "targets": ["Organization"], "cardinality": "one", "required": False},
     {"name": "primaryImageOfPage", "kind": "Ref", "targets": ["ImageObject"], "cardinality": "one", "required": False},
@@ -16,7 +16,7 @@ PROPERTIES = [
     {"name": "datePublished", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "dateModified", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "dateCreated", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "cardinality": "one", "required": False},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": False},
     {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
     {"name": "creativeWorkStatus", "kind": "Enum", "values": ["Draft", "Pending", "Published", "Archived"], "cardinality": "one", "required": False},
 ]

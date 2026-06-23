@@ -3,7 +3,7 @@ from app.views.layout import escape_html, layout, format_value, display_name, er
 ENTITY = "Comment"
 BASE = "/comments"
 PROPERTIES = [
-    {"name": "text", "kind": "InlineScalar", "use": "Text", "cardinality": "one", "required": True},
+    {"name": "text", "kind": "InlineScalar", "use": "Text", "maxLength": 10000, "multiline": True, "cardinality": "one", "required": True},
     {"name": "author", "kind": "Ref", "targets": ["Person"], "cardinality": "one", "required": True},
     {"name": "about", "kind": "Ref", "targets": ["BlogPosting"], "cardinality": "one", "required": True},
     {"name": "parentItem", "kind": "Ref", "targets": ["Comment"], "cardinality": "one", "required": False},
