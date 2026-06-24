@@ -17,7 +17,7 @@ from urllib.parse import urlparse, parse_qs
 # CSRF handling.
 
 SCHEMAS = {
-    "BlogPosting": {"plural": "blog-postings", "required": ["headline", "articleBody", "author"]},
+    "BlogPosting": {"plural": "blog-postings", "required": ["headline", "articleBody", "author", "url"]},
     "Person": {"plural": "persons", "required": ["name"]},
     "Organization": {"plural": "organizations", "required": ["name"]},
     "WebPage": {"plural": "web-pages", "required": ["headline"]},

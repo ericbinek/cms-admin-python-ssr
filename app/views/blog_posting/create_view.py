@@ -18,7 +18,7 @@ PROPERTIES = [
     {"name": "datePublished", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "dateModified", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
     {"name": "dateCreated", "kind": "InlineScalar", "use": "DateTime", "cardinality": "one", "required": False},
-    {"name": "url", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": False},
+    {"name": "url", "kind": "InlineScalar", "use": "URL", "maxLength": 2048, "cardinality": "one", "required": True},
     {"name": "inLanguage", "kind": "Embed", "use": "Language", "cardinality": "one", "required": False},
     {"name": "isAccessibleForFree", "kind": "InlineScalar", "use": "Boolean", "cardinality": "one", "required": False},
     {"name": "wordCount", "kind": "InlineScalar", "use": "Integer", "cardinality": "one", "required": False},
