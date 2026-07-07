@@ -20,7 +20,6 @@ This is a work-in-progress project (v0.4.0). The roadmap is deliberately loose, 
 
 ## Considering
 
-- A framework-based variant of this server
 - A configurable page size
 
 Have a need or an idea? Open an issue. This is built in public and feedback shapes the order.
